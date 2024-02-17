@@ -1,3 +1,9 @@
+def main():
+    to_do_list = list_maker()
+    
+
+
+
 def list_maker():
     to_do = []
     print('Type h for help, enter a task:')
@@ -10,3 +16,4 @@ def list_maker():
         else:
             to_do.append(user_input)
         user_input = input("Type a task:")
+    return to_do
