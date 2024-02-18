@@ -2,14 +2,18 @@ def main():
     to_do_list = list_maker()
     print_list(to_do_list)
     while len(to_do_list) > 0:
-        mark_complete(to_do_list)
-        print_list(to_do_list)
+        try:
+            mark_complete(to_do_list)
+            print_list(to_do_list)
+        except:
+            break
+        
     
 
 # takes user inputs in order to create the to do list
 def list_maker():
     to_do = []
-    print('Type h for help or enter q to quit:')
+    print('Type h for help or enter q to finish:')
     user_input = input("Type a task: ")
     while user_input != 'q':
         if user_input == 'h':
@@ -25,10 +29,10 @@ def list_maker():
 def mark_complete(list):
     user_input = input("Type finished task/task number: ")
     if user_input == 'q':
-        return
+        raise Exception("Exiting")
     try:
-        user_input = int(user_input) - 1
-        if user_input < len(list):
+        user_input = int(user_input)
+        if user_input <= len(list):
             index = user_input - 1
             del list[index]
     except:
@@ -44,7 +48,7 @@ def mark_complete(list):
 def print_list(list):
     i = 1
     print()
-    print("To do today:")
+    print("To do today: (type q to quit)")
     for item in list:
         print(f"{i}) {item}")
         i += 1
