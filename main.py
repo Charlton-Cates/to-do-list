@@ -52,5 +52,7 @@ def print_list(list):
     for item in list:
         print(f"{i}) {item}")
         i += 1
+    print()
 
+    
 main()
